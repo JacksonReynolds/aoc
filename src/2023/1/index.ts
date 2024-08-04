@@ -46,7 +46,7 @@ In this example, the calibration values are 29, 83, 13, 24, 42, 14, and 76. Addi
 
 let lines: string[];
 try {
-  const filePath = "/Users/jacksonreynolds/dev/aoc/src/2023/1/input.txt";
+  const filePath = "src/2023/1/input.txt";
   const fileContent = fs.readFileSync(filePath, "utf-8");
   lines = fileContent.split("\n");
 } catch (e) {
