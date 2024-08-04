@@ -102,6 +102,10 @@ const partTwo = (data = lines) => {
   }, 0);
 };
 
+// expect 142
+const p1TestData = ["1abc2", "pqr3stu8vwx", "a1b2c3d4e5f", "treb7uchet"];
+
+// expect 281
 const p2TestData = [
   "two1nine",
   "eightwothree",
