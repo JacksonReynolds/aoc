@@ -1,3 +1,3 @@
 https://adventofcode.com/
 
-packages namanged by [pnpm](https://pnpm.io/)
+packages managed by [pnpm](https://pnpm.io/)
