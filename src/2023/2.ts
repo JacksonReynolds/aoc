@@ -127,7 +127,6 @@ const processGame = (gameStr: string): Game => {
   return { id: Number(gameId), sets };
 };
 const isValidGame = (constraints: CountConstraints, game: Game) => {
-  console.log(game.id);
   const { sets } = game;
   for (const set of sets) {
     if (
@@ -172,7 +171,6 @@ const partOne = (data = lines) => {
     if (!currentGameStr) return sumOfValidGames;
     const game = processGame(currentGameStr);
     if (isValidGame(constraints, game)) {
-      console.log("Valid Game: ", currentGameStr);
       return sumOfValidGames + game.id;
     }
     return sumOfValidGames;
