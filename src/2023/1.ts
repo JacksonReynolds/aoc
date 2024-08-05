@@ -1,4 +1,5 @@
-import fs, { lstat } from "fs";
+import fs from "fs";
+import { readLines } from "../utils/getLines";
 
 /**
  * --- Day 1: Trebuchet?! ---
@@ -44,14 +45,7 @@ In this example, the calibration values are 29, 83, 13, 24, 42, 14, and 76. Addi
 
 */
 
-let lines: string[];
-try {
-  const filePath = "src/2023/1/input.txt";
-  const fileContent = fs.readFileSync(filePath, "utf-8");
-  lines = fileContent.split("\n");
-} catch (e) {
-  console.log("Oopsie file read error:", e);
-}
+const lines = readLines("1");
 
 const partOne = (data = lines) =>
   data.reduce<number>((acc, line) => {
