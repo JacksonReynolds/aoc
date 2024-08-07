@@ -48,7 +48,7 @@ of the part numbers in the engine schematic?
 
 */
 
-import { readRaw } from "../utils/read";
+import { readRaw } from "../utils/files";
 
 const raw = readRaw("3").replace(/\n/g, ";");
 

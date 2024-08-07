@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "init-puzzle": "./scripts/stubDay.sh",
     "puzzle": "./scripts/run.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

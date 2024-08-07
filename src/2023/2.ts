@@ -88,7 +88,7 @@ For each game, find the minimum set of cubes that must have been present. What i
 the sum of the power of these sets?
 */
 
-import { readLines } from "../utils/read";
+import { readLines } from "../utils/files";
 
 const part1TestLines = [
   "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green",

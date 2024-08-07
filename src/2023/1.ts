@@ -1,5 +1,5 @@
 import fs from "fs";
-import { readLines } from "../utils/read";
+import { readLines } from "../utils/files";
 
 /**
  * --- Day 1: Trebuchet?! ---
