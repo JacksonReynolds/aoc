@@ -146,14 +146,6 @@ const processCard = (line: string) => {
 
   const score = matchingNums.length ? 2 ** (matchingNums.length - 1) : 0;
 
-  // console.log({
-  //   line,
-  //   score,
-  //   winningNums,
-  //   winningNumsStr,
-  //   playerNumsStr,
-  //   playerNums,
-  // });
   return {
     id: cardId,
     matchingNums,
@@ -174,7 +166,6 @@ const partTwo = (data = lines) => {
   );
 
   data.forEach((rawCard, i) => {
-    console.log({ rawCard });
     const { matchingNums } = processCard(rawCard);
     const copies = cardCounts.get(i) ?? 0;
 
