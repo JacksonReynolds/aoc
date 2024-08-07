@@ -79,10 +79,8 @@ const partOne = (data = raw) => {
       data.substring(left - 1, right + 1) +
       data.substring(left - 1 + lineLength, right + 1 + lineLength);
     if (allSymbols?.some((sym) => surroundingChars.includes(sym))) {
-      console.log("bingo");
       sum += num;
     }
-    console.log({ num, surroundingChars, lineLength });
     data =
       data.substring(0, left) +
       ".".repeat(num.toString().length) +
@@ -91,4 +89,52 @@ const partOne = (data = raw) => {
   return sum;
 };
 
+const partTwo = (data = raw) => {
+  data = data.replace(/\r?\n/g, ";");
+  const lineLength = data.indexOf(";") + 1;
+  const numbers = (data.match(/[0-9]+/g) ?? []).map((str) => +str);
+
+  const gears = new Map<number, number[]>();
+  for (const num of numbers) {
+    // for each index that corresponds to a char adjacent to num
+    // check if it is a gear (asterisk)
+    // if so either add it as a new entry to gears
+    // or add it to the existing entry
+    const left = data.indexOf(num.toString());
+    const right = left + num.toString().length;
+
+    // find gears in adjacent chars above
+    for (let i = left - 1 - lineLength; i < right + 1 - lineLength; i++) {
+      if (data[i] === "*") {
+        gears.get(i) ? gears.get(i)?.push(num) : gears.set(i, [num]);
+      }
+    }
+    // find gears in adjacent chars
+    for (let i = left - 1; i < right + 1; i++) {
+      if (data[i] === "*") {
+        gears.get(i) ? gears.get(i)?.push(num) : gears.set(i, [num]);
+      }
+    }
+    // find gears in adjacent chars below
+    for (let i = left - 1 + lineLength; i < right + 1 + lineLength; i++) {
+      if (data[i] === "*") {
+        gears.get(i) ? gears.get(i)?.push(num) : gears.set(i, [num]);
+      }
+    }
+    data =
+      data.substring(0, left) +
+      ".".repeat(num.toString().length) +
+      data.substring(right);
+  }
+
+  // find all entries with exactly two corresponding numbers
+  // sum the products of those numbers
+  return Array.from(gears.values())
+    .filter((nums) => nums.length === 2)
+    .reduce<number>((sum, [a, b]) => {
+      return sum + a * b;
+    }, 0);
+};
+
 console.log("Part One: ", partOne());
+console.log("part Two: ", partTwo());
